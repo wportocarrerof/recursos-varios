@@ -1,0 +1,221 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2639
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Menlo-Bold;\f1\fnil\fcharset0 Menlo-Regular;\f2\fnil\fcharset0 Menlo-Italic;
+}
+{\colortbl;\red255\green255\blue255;\red54\green97\blue247;\red0\green0\blue0;\red83\green83\blue83;
+\red43\green148\blue101;\red231\green136\blue27;\red59\green59\blue59;\red77\green110\blue255;\red221\green221\blue221;
+\red180\green180\blue180;\red60\green95\blue255;\red143\green143\blue143;\red63\green12\blue213;\red253\green130\blue133;
+\red116\green26\blue160;\red49\green179\blue255;}
+{\*\expandedcolortbl;;\cssrgb\c27182\c48436\c97573;\csgray\c0;\cssrgb\c39894\c39894\c39894;
+\cssrgb\c19648\c63520\c47075;\cssrgb\c93038\c60430\c13280;\cssrgb\c29630\c29630\c29630;\cspthree\c40605\c52511\c96859;\cspthree\c89412\c89412\c89412;
+\cssrgb\c75677\c75677\c75677;\cssrgb\c29815\c47883\c100000;\cssrgb\c62864\c62864\c62864;\cssrgb\c32068\c18565\c86910;\cssrgb\c100000\c59322\c59011;
+\cssrgb\c53607\c20418\c69096;\cssrgb\c21868\c75661\c100000;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww20920\viewh15700\viewkind0
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\b\fs28 \cf2 \CocoaLigature0 > Como resuelvo este tema de los excesos de skills?, hay skills que ni uso, se instaalron en algun momento,
+\f1\b0 \cf3 \
+
+\f0\b \cf2   como hago para quiz\'e1s no borrarlos pero desahbilitarlos para que Antigravity los use solo cuando sean
+\f1\b0 \cf3 \
+
+\f0\b \cf2   necesraios?, en esta carpeta estan las capturas  /Users/waltereduardo/Desktop/agy
+\f1\b0 \cf3 \
+\
+\cf4 \uc0\u9675 \cf3  \cf4 Thought for 2m 22s\cf3  \cf4 (Plugin activation status is controlled via a configuration file. The `plugin disable`...)\cf3 \
+\cf5 \uc0\u9679 \cf3  
+\f0\b \cf6 Ran
+\f1\b0 \cf3  \cf4 (ls -la /Users/waltereduardo/Desktop/agy)\cf3 \
+\cf5 \uc0\u9679 \cf3  
+\f0\b \cf6 Explored
+\f1\b0 \cf3  \cf7 2 files\cf3  \cf4 (1.png, SKILL.md)\cf3 \
+\cf4 \'85 17 more actions (15 reads, 2 commands) \'85\cf3 \
+\cf5 \uc0\u9679 \cf3  
+\f0\b \cf6 Ran
+\f1\b0 \cf3  \cf7 6 commands\cf3  \cf4 (+4 \'b7 agy plugin disable --help: failed \'b7 agy help plugin)\cf3 \
+\cf5 \uc0\u9679 \cf3  
+\f0\b \cf6 Explored
+\f1\b0 \cf3  \cf7 2 files\cf3  \cf4 (SKILL.md, app.md)\cf3  \cf4 (ctrl+o to expand)\cf3 \
+\
+\cf4 \uc0\u9656  Thought for 1m 0s, 3.6k tokens\cf3 \
+\
+  \cf7 Revis\'e9 detalladamente las capturas en \cf8 \cb9 /Users/waltereduardo/Desktop/agy\cf7 \cb1  y la configuraci\'f3n interna de       \cf3 \
+  \cf7 Antigravity en tu Mac.                                                                                     \cf3 \
+  \cf10 \uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \cf7                                                                                                      \cf3 \
+  
+\f0\b \cf11 ### Diagn\'f3stico del problema
+\f1\b0 \cf7                                                                                \cf3 \
+  \cf7                                                                                                            \cf3 \
+  \cf7 En la 
+\f0\b captura 1
+\f1\b0  se aprecia claramente la alerta:                                                           \cf3 \
+  \cf7                                                                                                            \cf3 \
+  \cf7 \uc0\u9474  \u9888  
+\f0\b Customization token budget exceeded. Large customizations will be truncated automatically.
+\f1\b0              \cf3 \
+  \cf7 \uc0\u9474  
+\f0\b Skills (17,891 tokens) 89.5%
+\f1\b0                                                                              \cf3 \
+  \cf7                                                                                                            \cf3 \
+  \cf7 Al llegar a 
+\f0\b 119 skills
+\f1\b0  activas globalmente, Antigravity agota el presupuesto de contexto inicial y comienza\cf3 \
+  \cf7 a truncar o excluir skills (por ejemplo, omiti\'f3 \cf8 \cb9 modern-web-guidance\cf7 \cb1 ).                                      \cf3 \
+  \cf7                                                                                                            \cf3 \
+  \cf7 En las 
+\f0\b capturas 6 a 22
+\f1\b0 , al recorrer la lista de 
+\f2\i Settings > Customizations
+\f1\i0 , viste que 
+\f0\b las skills
+\f1\b0             \cf3 \
+  
+\f0\b \cf7 individuales no tienen un bot\'f3n de encendido/apagado
+\f1\b0  (a diferencia de 
+\f2\i Custom Agents
+\f1\i0  en la captura 22). Esto\cf3 \
+  \cf7 ocurre porque la gran mayor\'eda de esas skills no fueron creadas individualmente, sino que forman parte de   \cf3 \
+  
+\f0\b \cf7 Plugins instalados a nivel de sistema
+\f1\b0 .                                                                     \cf3 \
+  \cf10 \uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \cf7                                                                                                      \cf3 \
+  
+\f0\b \cf11 ### \'bfDe d\'f3nde provienen estas 119 skills en tu Mac?
+\f1\b0 \cf7                                                         \cf3 \
+  \cf7                                                                                                            \cf3 \
+  \cf7 Revisando tu instalaci\'f3n con el CLI de Antigravity (\cf8 \cb9 agy plugin list\cf7 \cb1 ), el desglose exacto es el siguiente:  \cf3 \
+  \cf7                                                                                                            \cf3 \
+   \cf7 Origen\cf3                  \uc0\u9474  \cf7 Tipo\cf3            \uc0\u9474  \cf7 N.\'ba Skills\cf3  \uc0\u9474  \cf7 Qu\'e9 contiene\cf3 \
+  \uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9532 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9532 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9532 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+   \cf8 \cb9 science\cf3 \cb1                 \uc0\u9474  \cf7 Plugin\cf3          \uc0\u9474      
+\f0\b \cf7 41
+\f1\b0 \cf3      \uc0\u9474  \cf7 Bases de datos de bioinform\'e1tica, gen\'e9tica,\cf3 \
+                          \uc0\u9474                 \u9474             \u9474  \cf7 qu\'edmica y medicina (AlphaFold, PubMed, ChEMBL,\cf3 \
+                          \uc0\u9474                 \u9474             \u9474  \cf7 ClinVar, UniProt, dbSNP, etc.). 
+\f0\b Es el plugin que
+\f1\b0 \cf3 \
+                          \uc0\u9474                 \u9474             \u9474  
+\f0\b \cf7 m\'e1s tokens consume.
+\f1\b0 \cf3 \
+   \cf8 \cb9 flutter\cf3 \cb1                 \uc0\u9474  \cf7 Plugin\cf3          \uc0\u9474      
+\f0\b \cf7 25
+\f1\b0 \cf3      \uc0\u9474  \cf7 Herramientas de Dart, arquitectura Flutter,\cf3 \
+                          \uc0\u9474                 \u9474             \u9474  \cf7 pruebas de widgets, etc.\cf3 \
+   \cf8 \cb9 firebase\cf3 \cb1                \uc0\u9474  \cf7 Plugin\cf3          \uc0\u9474      
+\f0\b \cf7 13
+\f1\b0 \cf3      \uc0\u9474  \cf7 Firestore, App Hosting, Remote Config, Auth, etc.\cf3 \
+   \cf8 \cb9 chrome-devtools-plugin\cf3 \cb1  \uc0\u9474  \cf7 Plugin\cf3          \uc0\u9474      
+\f0\b \cf7 6
+\f1\b0 \cf3       \uc0\u9474  \cf7 Diagn\'f3stico de accesibilidad, cookies, LCP,\cf3 \
+                          \uc0\u9474                 \u9474             \u9474  \cf7 memoria web.\cf3 \
+   \cf8 \cb9 android-cli-plugin\cf3 \cb1      \uc0\u9474  \cf7 Plugin\cf3          \uc0\u9474      
+\f0\b \cf7 3
+\f1\b0 \cf3       \uc0\u9474  \cf7 Android CLI, Device Hub, Compose preview.\cf3 \
+   \cf8 \cb9 gemini-api\cf3 \cb1              \uc0\u9474  \cf7 Plugin\cf3          \uc0\u9474      
+\f0\b \cf7 3
+\f1\b0 \cf3       \uc0\u9474  \cf7 Modelos Gemini API y Live API.\cf3 \
+   \cf8 \cb9 modern-web-guidance\cf3 \cb1     \uc0\u9474  \cf7 Plugin\cf3          \uc0\u9474      
+\f0\b \cf7 2
+\f1\b0 \cf3       \uc0\u9474  \cf7 Est\'e1 duplicado (instalado como \cf8 \cb9 modern-web-guidance\cf3 \cb1 \
+                          \uc0\u9474                 \u9474             \u9474  \cf7 y \cf8 \cb9 modern-web-guidance-plugin\cf7 \cb1 ).\cf3 \
+   \cf8 \cb9 ~/.gemini/skills/\cf3 \cb1       \uc0\u9474  \cf7 Skills sueltas\cf3  \uc0\u9474      
+\f0\b \cf7 21
+\f1\b0 \cf3      \uc0\u9474  \cf7 Skills globales de GCP / BigQuery / Spark /\cf3 \
+                          \uc0\u9474                 \u9474             \u9474  \cf7 Dataflow instaladas previamente.\cf3 \
+  \cf10 \uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \cf7                                                                                                      \cf3 \
+  
+\f0\b \cf11 ### \'bfC\'f3mo deshabilitarlos sin borrarlos para usarlos solo cuando los necesites?
+\f1\b0 \cf7                             \cf3 \
+  \cf7                                                                                                            \cf3 \
+  \cf7 Tienes 
+\f0\b tres formas limpias
+\f1\b0  de lograrlo sin perder ning\'fan archivo:                                          \cf3 \
+  \cf7                                                                                                            \cf3 \
+  
+\f0\b \cf11 #### 1. La forma m\'e1s r\'e1pida: V\'eda terminal con el CLI \cf8 \cb9 agy\cf11 \cb1  (Recomendado)
+\f1\b0 \cf7                                      \cf3 \
+  \cf7                                                                                                            \cf3 \
+  \cf7 Antigravity cuenta con el comando \cf8 \cb9 agy plugin disable <nombre>\cf7 \cb1 , que apaga el plugin y todas sus skills      \cf3 \
+  \cf7 asociadas 
+\f0\b sin borrar absolutamente nada del disco
+\f1\b0 . Sus archivos permanecen intactos en                     \cf3 \
+  \cf8 \cb9 ~/.gemini/config/plugins/\cf7 \cb1 .                                                                                 \cf3 \
+  \cf7                                                                                                            \cf3 \
+  \cf7 Por ejemplo, si deshabilitas los que no usas en el d\'eda a d\'eda:                                              \cf3 \
+  \cf7                                                                                                            \cf3 \
+  \cf7   \cf12 # Deshabilita 41 skills cient\'edficas/m\'e9dicas de un golpe\cf7                                                   \cf3 \
+  \cf7   agy plugin disable science                                                                               \cf3 \
+  \cf7                                                                                                            \cf3 \
+  \cf7   \cf12 # Si no est\'e1s desarrollando en Flutter/Dart en este momento (25 skills)\cf7                                   \cf3 \
+  \cf7   agy plugin disable flutter                                                                               \cf3 \
+  \cf7                                                                                                            \cf3 \
+  \cf7   \cf12 # Si no est\'e1s usando Android CLI (3 skills)\cf7                                                               \cf3 \
+  \cf7   agy plugin disable android-cli-plugin                                                                    \cf3 \
+  \cf7                                                                                                            \cf3 \
+  \cf7 \uc0\u9474  
+\f0\b \cf5 Tip
+\f1\b0 \cf7                                                                               \cf3 \
+  \cf7 \uc0\u9474  
+\f0\b Solo deshabilitando 
+\f1\b0 \cf8 \cb9 science
+\f0\b \cf7 \cb1  y 
+\f1\b0 \cf8 \cb9 flutter
+\f0\b \cf7 \cb1  eliminas 66 skills de golpe
+\f1\b0 , lo que liberar\'e1 m\'e1s de 
+\f0\b 9,000 tokens
+\f1\b0  y \cf3 \
+  \cf7 \uc0\u9474  quitar\'e1 de inmediato la alerta roja/amarilla de presupuesto excedido.\cf3                                     \
+                                                                                                             \
+  
+\f0\b \cf7 Para reactivarlos en cualquier momento que los necesites:
+\f1\b0 \cf3                                                   \
+                                                                                                             \
+  \cf7   agy plugin \cf13 enable\cf7  science\cf3                                                                                 \
+  \cf7   agy plugin \cf13 enable\cf7  flutter\cf3                                                                                 \
+  \cf10 \uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \cf3                                                                                                      \
+  
+\f0\b \cf11 #### 2. Editando directamente el archivo de configuraci\'f3n global
+\f1\b0 \cf3                                            \
+                                                                                                             \
+  \cf7 El comando anterior lo \'fanico que hace tras bambalinas es modificar el archivo:\cf3                              \
+  \cf7 config.json\cf3                                                                                                 \
+                                                                                                             \
+  \cf7 Dentro de la secci\'f3n \cf8 \cb9 "plugins"\cf7 \cb1 , puedes cambiar \cf8 \cb9 "enabled": true\cf7 \cb1  por \cf8 \cb9 "enabled": false\cf7 \cb1 :\cf3                        \
+                                                                                                             \
+  \cf7   \cf14 \{\cf3                                                                                                         \
+  \cf7     \cf15 "plugins"\cf14 :\cf7  \cf14 \{\cf3                                                                                            \
+  \cf7       \cf15 "science"\cf14 :\cf7  \cf14 \{\cf3                                                                                          \
+  \cf7         \cf15 "enabled"\cf14 :\cf7  \cf16 false\cf3                                                                                    \
+  \cf7       \cf14 \},\cf3                                                                                                    \
+  \cf7       \cf15 "flutter"\cf14 :\cf7  \cf14 \{\cf3                                                                                          \
+  \cf7         \cf15 "enabled"\cf14 :\cf7  \cf16 false\cf3                                                                                    \
+  \cf7       \cf14 \}\cf3                                                                                                     \
+  \cf7     \cf14 \}\cf3                                                                                                       \
+  \cf7   \cf14 \}\cf3                                                                                                         \
+  \cf10 \uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \cf3                                                                                                      \
+  
+\f0\b \cf11 #### 3. Para las 21 skills independientes de Google Cloud / BigQuery
+\f1\b0 \cf3                                        \
+                                                                                                             \
+  \cf7 Las 21 skills que est\'e1n sueltas en skills (como \cf8 \cb9 bigquery-sql\cf7 \cb1 , \cf8 \cb9 gcp-spark\cf7 \cb1 , \cf8 \cb9 data-autocleaning\cf7 \cb1 , etc.) no       \cf3 \
+  \cf7 pertenecen a un plugin. Para no cargarlas en todos tus proyectos web:\cf3                                       \
+                                                                                                             \
+  \cf7 1. 
+\f0\b Crear una carpeta de reserva para inactivarlas:
+\f1\b0 \cf3                                                          \
+  \cf7 Puedes mover las carpetas de las skills que no uses a \cf8 \cb9 ~/.gemini/skills_disabled/\cf7 \cb1 . Antigravity solo escanea \cf3 \
+  \cf8 \cb9 ~/.gemini/skills/\cf7 \cb1 , por lo que no las cargar\'e1, pero las tendr\'e1s disponibles para moverlas de vuelta cuando  \cf3 \
+  \cf7 trabajes con GCP.\cf3                                                                                           \
+  \cf7 2. 
+\f0\b Mejor pr\'e1ctica recomendada (Skills por proyecto):
+\f1\b0 \cf3                                                        \
+  \cf7 En lugar de tener skills de BigQuery o Flutter globales para todos tus proyectos, la arquitectura de       \cf3 \
+  \cf7 Antigravity permite colocarlas dentro de la carpeta \cf8 \cb9 .agents/skills/\cf7 \cb1  del repositorio espec\'edfico donde       \cf3 \
+  \cf7 realmente las usas. As\'ed, cuando abras un proyecto web como \cf8 \cb9 hyperframes\cf7 \cb1 , no se cargar\'e1 nada de BigQuery ni  \cf3 \
+  \cf7 de Flutter.\cf3                                                                                                 \
+  \cf10 \uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \cf3                                                                                                      \
+  
+\f0\b \cf11 ### \'bfDeseas que lo configure por ti?
+\f1\b0 \cf3                                                                        \
+                                                                                                             \
+  \cf7 Puedo ejecutar ahora mismo el comando para deshabilitar los plugins pesados que no est\'e9s usando actualmente\cf3 \
+  \cf7 (por ejemplo \cf8 \cb9 science\cf7 \cb1 , \cf8 \cb9 flutter\cf7 \cb1  y \cf8 \cb9 android-cli-plugin\cf7 \cb1 ). \'bfTe gustar\'eda que proceda con esos tres?\cf3                }
